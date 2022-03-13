@@ -21,7 +21,7 @@ ul {
 
   &__inner {
     height: 90%;
-    width: 90%;
+    max-width: 90%;
     display: flex;
     flex-direction: row;
   }
@@ -29,7 +29,7 @@ ul {
 
 .sidebar {
   background-color: white;
-  flex-grow: 1;
+  width: 16rem;
   height: 100%;
   padding-top: 3rem;
   padding-left: 2rem;
@@ -73,12 +73,14 @@ ul {
 
 .main {
   height: 100%;
-  flex-grow: 4;
   background-color: white;
   border-top-right-radius: 2rem;
   border-bottom-right-radius: 2rem;
   padding: 1.5rem 2rem;
   padding-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 .header {
@@ -122,6 +124,99 @@ ul {
     p {
       margin: 0 0.33rem;
       color: $main-text-color;
+    }
+  }
+}
+
+.board {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  &__header {
+    color: $main-text-color;
+    margin: 1rem 0;
+  }
+
+  &__lists {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    overflow-x: scroll;
+    overflow-y: hidden;
+  }
+
+  &__list {
+    height: 100%;
+    width: 280px;
+    margin: 1rem;
+    padding: 1rem;
+    flex-shrink: 0;
+    background-color: #eee;
+    overflow-y: auto;
+    border-top-right-radius: 1rem;
+    border-top-left-radius: 1rem;
+
+    &__header {
+      display: flex;
+      justify-content: space-between;
+
+      &__title {
+        color: $main-text-color;
+      }
+
+      &__count {
+        height: 1.5rem;
+        width: 1.5rem;
+        background-color: $color-2;
+        color: $teal-color;
+        border-radius: 0.5rem;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+
+    &__add {
+      width: 100%;
+      background-color: $color-2;
+      color: $teal-color;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0.75rem 0;
+      padding: 0.25rem;
+      border-radius: 0.25rem;
+      cursor: pointer;
+    }
+  }
+}
+
+.cards_list {
+  overflow-y: scroll;
+
+  .card {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    background-color: white;
+    margin: 0.5rem 0;
+    cursor: pointer;
+
+    &__title {
+      &:before {
+        content: "●";
+        color: $teal-color;
+        padding-right: 0.5rem;
+      }
+    }
+
+    &__desc {
+      margin-top: 0.75rem;
+      line-height: 1.25rem;
+      font-size: 0.75rem;
+      color: $secondary-text-color;
     }
   }
 }
