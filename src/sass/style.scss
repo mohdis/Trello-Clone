@@ -150,51 +150,62 @@ ul {
     height: 100%;
     width: 280px;
     margin: 1rem;
-    padding: 1rem;
+    padding: 1rem 0;
     flex-shrink: 0;
     background-color: #eee;
-    overflow-y: auto;
+    overflow-y: hidden;
     border-top-right-radius: 1rem;
     border-top-left-radius: 1rem;
 
-    &__header {
-      display: flex;
-      justify-content: space-between;
+    display: flex;
+    flex-direction: column;
 
-      &__title {
-        color: $main-text-color;
+    &__header {
+      padding: 0 1rem;
+
+      &__info {
+        display: flex;
+        justify-content: space-between;
+
+        &__title {
+          color: $main-text-color;
+        }
+
+        &__count {
+          height: 1.5rem;
+          width: 1.5rem;
+          background-color: $color-2;
+          color: $teal-color;
+          border-radius: 0.5rem;
+          text-align: center;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
       }
 
-      &__count {
-        height: 1.5rem;
-        width: 1.5rem;
+      &__add {
+        width: 100%;
         background-color: $color-2;
         color: $teal-color;
-        border-radius: 0.5rem;
-        text-align: center;
         display: flex;
         justify-content: center;
         align-items: center;
+        margin: 0.75rem 0;
+        padding: 0.25rem;
+        border-radius: 0.25rem;
+        cursor: pointer;
       }
-    }
-
-    &__add {
-      width: 100%;
-      background-color: $color-2;
-      color: $teal-color;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 0.75rem 0;
-      padding: 0.25rem;
-      border-radius: 0.25rem;
-      cursor: pointer;
     }
   }
 }
 
 .cards_list {
+  display: flex;
+  flex-direction: column;
   overflow-y: scroll;
+  padding: 0 1rem;
+  height: calc(100% - 150px);
 
   .card {
     width: 100%;
