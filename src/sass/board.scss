@@ -1,0 +1,79 @@
+.board {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  &__header {
+    color: $main-text-color;
+    margin: 1rem 0;
+  }
+
+  &__lists {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    overflow-x: scroll;
+    overflow-y: hidden;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 280px;
+    margin: 1rem;
+    padding: 1rem 0;
+    flex-shrink: 0;
+    background-color: #eee;
+    overflow-y: hidden;
+    border-top-right-radius: 1rem;
+    border-top-left-radius: 1rem;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &__header {
+      padding: 0 1rem;
+
+      &__info {
+        display: flex;
+        justify-content: space-between;
+
+        &__title {
+          color: $main-text-color;
+        }
+
+        &__count {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 1.5rem;
+          width: 1.5rem;
+          background-color: $color-2;
+          color: $teal-color;
+          border-radius: 0.5rem;
+          text-align: center;
+        }
+      }
+
+      &__add {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        background-color: $color-2;
+        color: $teal-color;
+        margin: 0.75rem 0;
+        padding: 0.25rem;
+        border-radius: 0.25rem;
+        cursor: pointer;
+      }
+    }
+  }
+}

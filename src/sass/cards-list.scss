@@ -1,0 +1,31 @@
+.cards_list {
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  padding: 0 1rem;
+  height: calc(100% - 150px);
+
+  .card {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    background-color: white;
+    margin: 0.5rem 0;
+    cursor: pointer;
+
+    &__title {
+      &:before {
+        content: "●";
+        color: $teal-color;
+        padding-right: 0.5rem;
+      }
+    }
+
+    &__desc {
+      margin-top: 0.75rem;
+      line-height: 1.25rem;
+      font-size: 0.75rem;
+      color: $secondary-text-color;
+    }
+  }
+}
