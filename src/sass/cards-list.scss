@@ -6,6 +6,7 @@
   height: calc(100% - 150px);
 
   .card {
+    position: relative;
     width: 100%;
     padding: 0.75rem;
     border-radius: 0.5rem;
@@ -13,11 +14,28 @@
     margin: 0.5rem 0;
     cursor: pointer;
 
+    &:hover {
+      .card__remove {
+        visibility: visible;
+      }
+    }
+
+    &__remove {
+      visibility: hidden;
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 0.5rem;
+      font-size: 0.75rem;
+      color: $secondary-text-color;
+    }
+
     &__title {
       &:before {
         content: "●";
         color: $teal-color;
         padding-right: 0.5rem;
+        line-height: 1.25rem;
       }
     }
 

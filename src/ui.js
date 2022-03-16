@@ -35,6 +35,9 @@ function cardsListHTML(cards) {
     .map(
       (card) => `
       <div draggable="true" class="card" card-id=${card.id}>
+        <div>
+          <i class="card__remove tiny material-icons">close</i>
+        </div>
         <p class="card__title">${card.title}</p>
         <p class="card__desc">
           ${card.desc}

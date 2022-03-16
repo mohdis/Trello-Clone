@@ -2,7 +2,7 @@ import debounce from "lodash.debounce";
 
 import { getAttributeFromAncestors, elementHasClass } from "./utils";
 import { renderLists, renderListsWithFilter } from "./render";
-import { addCard, editCard, getCard } from "./localStorage";
+import { addCard, editCard, getCard, removeCard } from "./localStorage";
 import {
   closeCardDialog,
   openCardDialogToAdd,
@@ -22,6 +22,7 @@ let selectedCardID = null;
 export default function initializeApp() {
   listContainer.addEventListener("click", handleClickCard);
   listContainer.addEventListener("click", handleClickAddNewCard);
+  listContainer.addEventListener("click", handleClickRemoveCard);
   cardDialog.addEventListener("click", handleCloseCardEditDialog);
   cardDialogForm.addEventListener("submit", handleSubmitCardDialog);
   searchInput.addEventListener("keyup", () =>
@@ -53,6 +54,18 @@ function handleClickAddNewCard({ target }) {
   ) {
     selectedListID = getAttributeFromAncestors(target, "list-id");
     openCardDialogToAdd();
+  }
+}
+
+function handleClickRemoveCard(e) {
+  if (elementHasClass(e.target, "card__remove")) {
+    e.stopPropagation();
+
+    const cardID = getAttributeFromAncestors(e.target, "card-id");
+    const listID = getAttributeFromAncestors(e.target, "list-id");
+
+    removeCard(cardID, listID);
+    renderLists();
   }
 }
 
