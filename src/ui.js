@@ -21,7 +21,7 @@ export function paintLists(lists) {
               <i class="material-icons">add</i>
             </div>
           </div>
-          <div class="cards_list">
+          <div class="card-list">
             ${cardsListHTML(list.cards)}
           </div>
         </div>
@@ -34,7 +34,7 @@ function cardsListHTML(cards) {
   return cards
     .map(
       (card) => `
-      <div class="card" card-id=${card.id}>
+      <div draggable="true" class="card" card-id=${card.id}>
         <p class="card__title">${card.title}</p>
         <p class="card__desc">
           ${card.desc}

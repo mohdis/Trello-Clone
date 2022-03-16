@@ -1,3 +1,73 @@
+export function getLists() {
+  const lists = localStorage.getItem("lists");
+  return lists ? JSON.parse(lists) : INITIAL_STATE;
+}
+
+export function getListsWithFilter(filter = "") {
+  const lists = getLists();
+  if (!filter) return lists;
+
+  const lowerCasedFilter = filter.toLowerCase();
+
+  return lists.map((list) => ({
+    ...list,
+    cards: list.cards.filter(
+      (card) =>
+        card.title.toLowerCase().includes(lowerCasedFilter) ||
+        card.desc.toLowerCase().includes(lowerCasedFilter)
+    ),
+  }));
+}
+
+export function addCard(card, listID) {
+  if (!card || !listID) return;
+
+  const lists = getLists();
+  const list = lists.find((list) => list.id == listID);
+
+  list.cards.push({ id: Date.now(), ...card });
+  saveLists(lists);
+
+  return lists;
+}
+
+export function removeCard(cardID, listID) {
+  if (!cardID || !listID) return;
+
+  const lists = getLists();
+  const index = lists.findIndex((list) => list.id == listID);
+  lists[index].cards = lists[index].cards.filter((card) => card.id != cardID);
+
+  saveLists(lists);
+}
+
+export function editCard(editedCard, listID) {
+  if (!editedCard || !listID) return;
+
+  const lists = getLists();
+  const list = lists.find((list) => list.id == listID);
+  const cardIndex = list.cards.findIndex((card) => card.id == editedCard.id);
+
+  list.cards[cardIndex] = editedCard;
+  saveLists(lists);
+
+  return lists;
+}
+
+export function getCard(cardID, listID) {
+  if (!cardID || !listID) return;
+
+  const lists = getLists();
+  const list = lists.find((list) => list.id == listID);
+  const card = list.cards.find((card) => card.id == cardID);
+
+  return card;
+}
+
+function saveLists(lists) {
+  localStorage.setItem("lists", JSON.stringify(lists));
+}
+
 const INITIAL_STATE = [
   {
     id: 0,
@@ -33,63 +103,3 @@ const INITIAL_STATE = [
     ],
   },
 ];
-
-export function getLists() {
-  const lists = localStorage.getItem("lists");
-  return lists ? JSON.parse(lists) : INITIAL_STATE;
-}
-
-export function getListsWithFilter(filter = "") {
-  const lists = getLists();
-  if (!filter) return lists;
-
-  const lowerCasedFilter = filter.toLowerCase();
-
-  return lists.map((list) => ({
-    ...list,
-    cards: list.cards.filter(
-      (card) =>
-        card.title.toLowerCase().includes(lowerCasedFilter) ||
-        card.desc.toLowerCase().includes(lowerCasedFilter)
-    ),
-  }));
-}
-
-export function addCardToList(card, listID) {
-  if (!card || !listID) return;
-
-  const lists = getLists();
-  const list = lists.find((list) => list.id == listID);
-
-  list.cards.push({ id: Date.now(), ...card });
-  saveLists(lists);
-
-  return lists;
-}
-
-export function editCard(editedCard, listID) {
-  if (!editedCard || !listID) return;
-
-  const lists = getLists();
-  const list = lists.find((list) => list.id == listID);
-  const cardIndex = list.cards.findIndex((card) => card.id == editedCard.id);
-
-  list.cards[cardIndex] = editedCard;
-  saveLists(lists);
-
-  return lists;
-}
-
-export function getCard(cardID, listID) {
-  if (!cardID || !listID) return;
-
-  const lists = getLists();
-  const list = lists.find((list) => list.id == listID);
-  const card = list.cards.find((card) => card.id == cardID);
-
-  return card;
-}
-
-function saveLists(lists) {
-  localStorage.setItem("lists", JSON.stringify(lists));
-}

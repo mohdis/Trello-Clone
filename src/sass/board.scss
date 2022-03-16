@@ -28,7 +28,14 @@
     overflow-y: hidden;
     border-top-right-radius: 1rem;
     border-top-left-radius: 1rem;
+    border: 2px solid transparent;
+    transition: all 0.3s ease-in-out;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+    &--border {
+      border-color: $teal-color;
+      transform: scale(1.003);
+    }
 
     &:first-child {
       margin-left: 0;

@@ -1,15 +1,9 @@
 import debounce from "lodash.debounce";
-import { elementHasClass, getAttributeFromAncestors } from "./utils";
 
+import { getAttributeFromAncestors, elementHasClass } from "./utils";
+import { renderLists, renderListsWithFilter } from "./render";
+import { addCard, editCard, getCard } from "./localStorage";
 import {
-  getLists,
-  getListsWithFilter,
-  addCardToList,
-  editCard,
-  getCard,
-} from "./localStorage";
-import {
-  paintLists,
   closeCardDialog,
   openCardDialogToAdd,
   openCardDialogToEdit,
@@ -22,40 +16,18 @@ const cardDialogForm = document.querySelector(".card-dialog__form");
 const cardDialogTitleInput = document.querySelector(".card-dialog input");
 const cardDialogDescInput = document.querySelector(".card-dialog textarea");
 
-searchInput.addEventListener("keyup", () =>
-  debouncedHandleSearch(searchInput.value)
-);
-listContainer.addEventListener("click", handleClickCard);
-listContainer.addEventListener("click", handleClickAddNewCard);
-cardDialog.addEventListener("click", handleCloseCardEditDialog);
-cardDialogForm.addEventListener("submit", handleSubmitCardDialog);
-
 let selectedListID = null;
 let selectedCardID = null;
 
-showLists();
-
-function showLists() {
-  const lists = getLists();
-  paintLists(lists);
+export default function initializeApp() {
+  listContainer.addEventListener("click", handleClickCard);
+  listContainer.addEventListener("click", handleClickAddNewCard);
+  cardDialog.addEventListener("click", handleCloseCardEditDialog);
+  cardDialogForm.addEventListener("submit", handleSubmitCardDialog);
+  searchInput.addEventListener("keyup", () =>
+    debouncedHandleSearch(searchInput.value)
+  );
 }
-
-function showListsWithFilter(filter = "") {
-  const filteredLists = getListsWithFilter(filter);
-  paintLists(filteredLists);
-}
-
-function cleanup() {
-  selectedListID = null;
-  selectedCardID = null;
-}
-
-function closeCardDialogAndCleanup() {
-  closeCardDialog();
-  cleanup();
-}
-
-const debouncedHandleSearch = debounce(showListsWithFilter, 500);
 
 function handleClickCard({ target }) {
   const desiredClassName = "card";
@@ -105,9 +77,17 @@ function handleSubmitCardDialog(e) {
   if (selectedCardID) {
     editCard({ id: selectedCardID, ...card }, selectedListID);
   } else {
-    addCardToList(card, selectedListID);
+    addCard(card, selectedListID);
   }
 
-  showLists();
+  renderLists();
   closeCardDialogAndCleanup();
+}
+
+const debouncedHandleSearch = debounce(renderListsWithFilter, 500);
+
+function closeCardDialogAndCleanup() {
+  closeCardDialog();
+  selectedListID = null;
+  selectedCardID = null;
 }
