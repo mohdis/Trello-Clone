@@ -1,13 +1,18 @@
 import debounce from "lodash.debounce";
 
-import { getAttributeFromAncestors, elementHasClass } from "./utils";
-import { renderLists, renderListsWithFilter } from "./render";
-import { addCard, editCard, getCard, removeCard } from "./localStorage";
+import { getAttributeFromAncestors, elementHasClass } from "../utils";
+import { renderLists, renderListsWithFilter } from "../ui/render";
+import {
+  addCard,
+  editCard,
+  getCard,
+  removeCard,
+} from "../helpers/localStorage";
 import {
   closeCardDialog,
   openCardDialogToAdd,
   openCardDialogToEdit,
-} from "./ui";
+} from "../ui/ui";
 
 const listContainer = document.querySelector(".board__lists");
 const searchInput = document.querySelector(".header__search");

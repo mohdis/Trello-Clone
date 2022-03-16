@@ -1,6 +1,6 @@
-import { renderListsWithFilter } from "./render";
-import { getAttributeFromAncestors } from "./utils";
-import { addCard, removeCard, getCard } from "./localStorage";
+import { renderListsWithFilter } from "../ui/render";
+import { elementHasClass, getAttributeFromAncestors } from "../utils";
+import { addCard, removeCard, getCard } from "../helpers/localStorage";
 
 const listsContainer = document.querySelector(".board__lists");
 const searchInput = document.querySelector(".header__search");
@@ -30,7 +30,7 @@ function dragEnd(e) {
 }
 
 function dragEnter(e) {
-  if (e.target.classList.contains("card-list")) {
+  if (elementHasClass(e.target, "card-list")) {
     e.target.parentElement.classList.add("board__list--border");
   }
 }
@@ -40,13 +40,13 @@ function dragOver(e) {
 }
 
 function dragLeave(e) {
-  if (e.target.classList.contains("card-list")) {
+  if (elementHasClass(e.target, "card-list")) {
     e.target.parentElement.classList.remove("board__list--border");
   }
 }
 
 function drop(e) {
-  if (!e.target.classList.contains("card-list")) {
+  if (!elementHasClass(e.target, "card-list")) {
     return;
   }
 

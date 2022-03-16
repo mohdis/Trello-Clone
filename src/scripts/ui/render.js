@@ -1,5 +1,5 @@
 import { paintLists } from "./ui";
-import { getLists, getListsWithFilter } from "./localStorage";
+import { getLists, getListsWithFilter } from "../helpers/localStorage";
 
 export function renderLists() {
   const lists = getLists();
