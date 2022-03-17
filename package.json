@@ -3,12 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "homepage": "https://mohdis.github.io/Trello-Clone/",
   "scripts": {
-    "dev": "parcel src/index.html",
-    "build": "parcel build src/index.html --public-url https://mohdis.github.io/Trello-Clone/",
-    "predeploy": "rm -rf dist && npm run build",
-    "deploy": "gh-pages -d dist"
+    "dev": "parcel src/index.html"
   },
   "author": "",
   "license": "ISC",
@@ -17,7 +13,6 @@
     "eslint": "^8.10.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.25.4",
-    "gh-pages": "^3.2.3",
     "parcel-bundler": "^1.12.5",
     "prettier": "^2.5.1"
   },
