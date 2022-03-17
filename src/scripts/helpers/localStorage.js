@@ -5,8 +5,8 @@ const INITIAL_STATE = [
     cards: [
       {
         id: Date.now(),
-        title: "Watch Spider-man movie",
-        desc: "first i should download it and then watch and enjoy",
+        title: "Watch Spider-Man No Way Home movie",
+        desc: "First i should download it and then watch and enjoy",
       },
     ],
   },
@@ -16,8 +16,8 @@ const INITIAL_STATE = [
     cards: [
       {
         id: Date.now() + 1,
-        title: "Implement Drag and drop api for Trello clone app",
-        desc: "I need to read MDN document first and after that implement it don't forget writing tests",
+        title: "Write tests for trello clone app",
+        desc: "I need to config jest and a dom testing library to write tests",
       },
     ],
   },
@@ -27,8 +27,13 @@ const INITIAL_STATE = [
     cards: [
       {
         id: Date.now() + 2,
+        title: "Implement Drag and Drop api for Trello clone app",
+        desc: "I need to read MDN document first and after that implement it, don't forget writing tests",
+      },
+      {
+        id: Date.now() + 3,
         title: "Implement ui designs",
-        desc: "I'm gonna use a random design from dribble that is task manager app",
+        desc: "I'm gonna pick a random design from dribble that is task manager app",
       },
     ],
   },
