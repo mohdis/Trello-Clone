@@ -16,4 +16,4 @@ var t=arguments[3],e="Expected a function",n=NaN,r="[object Symbol]",i=/^\s+|\s+
 },{"../ui/render":"ftPX","../utils":"IOwx","../helpers/localStorage":"IUWK"}],"Focm":[function(require,module,exports) {
 "use strict";var e=t(require("./scripts/eventHandlers/app")),r=t(require("./scripts/eventHandlers/dragAndDrop")),s=require("./scripts/ui/render");function t(e){return e&&e.__esModule?e:{default:e}}(0,e.default)(),(0,r.default)(),(0,s.renderLists)();
 },{"./scripts/eventHandlers/app":"rrcQ","./scripts/eventHandlers/dragAndDrop":"c0jL","./scripts/ui/render":"ftPX"}]},{},["Focm"], null)
-//# sourceMappingURL=/src.f7428e6a.js.map
+//# sourceMappingURL=src.f7428e6a.js.map
